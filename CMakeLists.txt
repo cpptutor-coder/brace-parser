@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 project(parser)
 
 # add the executable
-add_executable(parser main.cpp state.cpp)
+add_executable(parser main.cpp state.cpp tree.cpp)
