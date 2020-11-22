@@ -1,0 +1,8 @@
+- Copy all the files in a folder
+- create a subfolder named "build" underneath it. Note you may give it a different name.
+- Afterwards type following 3 commands in sequence
+- cd build
+- cmake ../
+- make
+- A executable named "parser" will be generated. Run it as follows with a test <token_string>
+- echo <token_string> | ./parser

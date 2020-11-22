@@ -3,10 +3,12 @@
 
 #include "finite_state.h"
 
+// Abstract base class for Finite State Automata classes
 class State
 {
   public:
     virtual EState next_state(char c) = 0;
+    virtual ~State() {} // To get around spurious warning
 };
 
 class StartState : public State

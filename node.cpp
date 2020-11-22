@@ -17,16 +17,6 @@ namespace
         }
         return tokens;
     }
-
-    void dump_vector(vector<string> vec)
-    {
-        for (auto &v : vec)
-        {
-            cout << v << " ";
-        }
-        cout << endl;
-    }
-
 } // namespace
 
 void Node::add_label(char c)
@@ -56,9 +46,10 @@ Node* Node::get_parent() const
     return parent_;
 }
 
+// Go through the node and tree underneath it and put the tokens
+// in the input argument
 void Node::generate(vector<string> &tokens)
 {
-    //dump();
     if (children_.size() > 0)
     {
         list<vector<string>> child_tokens;
@@ -67,7 +58,6 @@ void Node::generate(vector<string> &tokens)
             vector<string> memo;
             v->generate(memo);
             assert(memo.size() > 0);
-            //dump_vector(memo);
             child_tokens.push_back(memo);
         }
         assert(child_tokens.size() > 0);
@@ -77,9 +67,9 @@ void Node::generate(vector<string> &tokens)
         {
             v = label_ + v;
         }
+        // "Multiply" all the the child node tokens
         while (!child_tokens.empty())
         {
-            //dump_vector(combined);
             combined = combine(combined, child_tokens.front());
             child_tokens.pop_front();
         }
@@ -96,17 +86,4 @@ void Node::generate(vector<string> &tokens)
     {
         sibling_->generate(tokens);
     }
-}
-
-void Node::dump() const
-{
-    cout << (void *)this << " " << label_;
-    for (auto &v : children_)
-    {
-        cout << " Child: " << (void *)v.get() << " " << v->get_label();
-    }
-    cout << " Sibling: " << (void *)sibling_.get() << " " << (sibling_ ? sibling_->get_label() : "");
-    auto sp = parent_;
-    cout << " Parent: " << (void *)sp << " " << (sp ? sp->get_label() : "")
-         << endl;
 }

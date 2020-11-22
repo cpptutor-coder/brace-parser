@@ -1,12 +1,7 @@
 
-// parse the input
-// make sure it's valid
-// then build the data structure
-// Generate once built
 #include "state.h"
 #include "tree.h"
 #include <list>
-#include <iostream> // VIK_TODO: Remove later on
 
 using namespace std;
 
@@ -82,7 +77,6 @@ EState OpenBraceState::next_state(char c)
     return state;
 }
 
-// VIK_TODO: Error if returning empty to parent and don't have any child
 EState CloseBraceState::next_state(char c)
 {
     auto state = EState::invalid;
@@ -92,8 +86,6 @@ EState CloseBraceState::next_state(char c)
     }
     else if (isclose_brace(c))
     {
-        // Keep a count of  braces and return
-        // invalid if the count becomes negative
         state = EState::close_brace;
     }
 

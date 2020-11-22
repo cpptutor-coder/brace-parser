@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 
+// Node class to construct "node" of a parsing tree
 class Node
 {
   public:

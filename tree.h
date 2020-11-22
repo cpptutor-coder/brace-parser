@@ -10,7 +10,7 @@
 class Tree
 {
   public:
-      void update_tree(EState state, char c);
+      void build_tree(EState state, char c);
       std::vector<std::string> generate() const;
       bool is_valid() const;
   private:

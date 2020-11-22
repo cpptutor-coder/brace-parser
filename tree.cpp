@@ -1,9 +1,8 @@
 #include "tree.h"
-#include <iostream>
 
 using namespace std;
 
-void Tree::update_tree(EState state, char c)
+void Tree::build_tree(EState state, char c)
 {
     assert(state != EState::invalid);
     switch (state)
@@ -31,6 +30,7 @@ void Tree::update_tree(EState state, char c)
     }
 }
 
+// Generate the output for the tree nodes
 vector<string> Tree::generate() const
 {
     vector<string> tokens;
