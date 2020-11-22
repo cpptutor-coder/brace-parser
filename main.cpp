@@ -1,36 +1,12 @@
-#include "state.h"
+#include "state_machine.h"
 #include <iostream>
-
-namespace 
-{
-
-/*
-bool is_input_valid(string s)
-{
-    bool valid = true;
-    for (auto c : s)
-    {
-        if (!isalpha(c) &&
-            !iscomma(c) &&
-            !isopen_brace(c) &&
-            !isclose_brace(c))
-        {
-            valid = false;
-            break;
-        }
-    }
-
-    return valid;
-} */
-} // namespace 
 
 int main(int argc, char* argv[])
 {
     std::string input;
     // VIK_TODO: Maybe do error checking for getline
-    // VIK_TODO: Take care of comma if it commas in the initial without paren
     std::getline(std::cin, input);
-    std::cout << "Processing input: " << input << std::endl;
+    //std::cout << "Processing input: " << input << std::endl;
     StateMachine sm;
 
     // VIK_TODO: Do sanity check probably in the build
@@ -42,10 +18,11 @@ int main(int argc, char* argv[])
         }
         std::cout << std::endl;
     }
+    /*
     else {
         std::cout << "\"" << input << "\" is not valid" << std::endl;
     }
-    
+    */
 
 }
 
