@@ -110,8 +110,6 @@ void Node::generate(vector<string>& tokens)
         parent_ = p;
     }
 
-// VIK_TODO: Make sure we reach to the top at the end of processing to take care 
-// of any unmatched braces
 void Tree::update_tree(EState state, char c)
 {
     assert(state != EState::invalid);
@@ -125,15 +123,17 @@ void Tree::update_tree(EState state, char c)
             curr_node_ = curr_node_->add_child();
         break;
         case EState::close_brace:
-        // VIK_TODO: Exception if parent is not there
             curr_node_ = curr_node_->get_parent();
+            if (curr_node_ == nullptr) {
+                throw runtime_error("Parsing error. One or more extra \"}\" ");
+            }
         break;
         case EState::comma:
             curr_node_ = curr_node_->add_sibling();
         break;
         default:
             assert(false);
-            // VIK_TODO: Exception
+            throw logic_error("Unknown EState");
     }
 }
 
